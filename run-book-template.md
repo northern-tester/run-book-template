@@ -224,11 +224,14 @@ _(e.g. Usual VM stats (CPU, disk, threads, etc.) + around 200 application techni
 
 #### Health of dependencies
 
-_(e.g. Use `/health` HTTP endpoint for internal components that expose it. Other systems and external endpoints: typically HTTP 200 but some synthetic checks for some services)_
+* External Payment Gateway - endpoints giving status monitored and reporting into StatusCake looking for 200 OK
+* External Credit Reference Service - ***WARNING - these endpoints are not currently monitored***
+* ***WARNING - health checks not present for test environments***
 
 #### Health of service
 
-_(e.g. Provide `/health` HTTP endpoint: 200 --> basic health, 500 --> bad configuration + `/health/deps` for checking dependencies)_
+* /health gives 200-399 OK to indicate health, 50X when it cannot be reached.
+* ***WARNING - application health checks need response time added to contextualise health checks.
 
 ## Operational tasks
 
